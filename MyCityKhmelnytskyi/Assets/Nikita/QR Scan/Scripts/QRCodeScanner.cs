@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ZXing;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class QRCodeScanner : MonoBehaviour
 {
     [SerializeField] private RawImage rawImageBackground;
@@ -64,7 +64,11 @@ public class QRCodeScanner : MonoBehaviour
             Result result = barcodeReader.Decode(cameraTexture.GetPixels32(), cameraTexture.width, cameraTexture.height);
             if (result != null)
             {
-                textOut.text = result.Text;
+              //  textOut.text = result.Text;
+              if(result.Text == "test")
+                {
+                    SceneManager.LoadScene("SampleScene");
+                }
                 
             }
             else
